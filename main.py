@@ -1,6 +1,7 @@
 # ✔Напишите функцию для транспонирования матрицы
 import  random
 import random
+from typing import Hashable
 
 SIZE_W = 5
 SIZE_H = 5
@@ -22,5 +23,15 @@ def my_func(my_matrix: list) -> list:
 
 print(my_func(matrix))
 # ✔Напишите функцию принимающую на вход только ключевые параметры и возвращающую словарь, где ключ — значение переданного аргумента, а значение — имя аргумента. Если ключ не хешируем, используйте его строковое представление.
+def f(**kwargs) -> dict:
+    my_dict = {}
+    for key, item in kwargs.items():
+        if not isinstance(item, Hashable):
+            item = str(item)
+        my_dict[item] = key
 
+    return my_dict
+
+
+print(f(a=5, b=6, my=[1, 2]))
 # ✔Возьмите задачу о банкомате из семинара 2. Разбейте её на отдельные операции — функции. Дополнительно сохраняйте все операции поступления и снятия средств в список.
